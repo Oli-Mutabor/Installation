@@ -6,34 +6,34 @@ public class Main {
     public static void main(String[] args) throws IOException {
         StringBuilder sb = new StringBuilder();
 
-        File dirSrc = new File("C://Games/src");
-        sb.append(createDirectory(dirSrc));
-        File dirRes = new File("C://Games/res");
-        sb.append(createDirectory(dirRes));
-        File dirSavegames = new File("C://Games/savegames");
-        sb.append(createDirectory(dirSavegames));
-        File dirTemp = new File("C://Games/temps");
-        sb.append(createDirectory(dirTemp));
+        String[] directories = {
+                "C://Games/src",
+                "C://Games/res",
+                "C://Games/savegames",
+                "C://Games/temps",
+                "C://Games/src/main",
+                "C://Games/src/test",
+                "C://Games/res/drawables",
+                "C://Games/res/vectors",
+                "C://Games/res/icons"
+        };
 
-        File dirMain = new File("C://Games/src/main");
-        sb.append(createDirectory(dirMain));
-        File dirTest = new File("C://Games/src/test");
-        sb.append(createDirectory(dirTest));
+        String[] files = {
+                "C://Games/src/main/Main.java",
+                "C://Games/src/main/Utils.java",
+                "C://Games/temps/temp.txt"
+        };
 
-        File fileMain = new File("C://Games/src/main/Main.java");
-        sb.append(createFile(fileMain));
-        File createFile = new File("C://Games/src/main/Utils.java");
-        sb.append(createFile(createFile));
+        for (String directory : directories) {
+            File dir = new File(directory);
+            sb.append(createDirectory(dir));
+        }
 
-        File dirDrawables = new File("C://Games/res/drawables");
-        sb.append(createDirectory(dirDrawables));
-        File dirVectors = new File("C://Games/res/vectors");
-        sb.append(createDirectory(dirVectors));
-        File dirIcons = new File("C://Games/res/icons");
-        sb.append(createDirectory(dirIcons));
+        for (String fileDirectory : files) {
+            File file = new File(fileDirectory);
+            sb.append(createFile(file));
+        }
 
-        File fileTemp = new File("C://Games/temps/temp.txt");
-        sb.append(createFile(fileTemp));
 
         try (FileWriter writer = new FileWriter("C://Games/temps/temp.txt")) {
             writer.write(String.valueOf(sb));
